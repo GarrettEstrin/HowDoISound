@@ -1,0 +1,17 @@
+PSEUDOCODE flow.
+
+User ----> Home Page ($state.home)
+User ----> Inputs text into main field. (ng-model = "InputText")
+User ----> Hits "Analyze".
+        I I
+        I I
+Front End ----> Take text, post to back-end.
+Back End -----> Store, then take text data and send to Watson.
+Watson   -----> Take text data, stringify, send back as JSON.
+Back End -----> Take JSON, parse(?), send to Front End.
+Front End ----> Retrieve values from dataThatCameBack, plug into "whichEmoji" function.
+Front End ----> In the meanwhile, switch to ($state.analyzing)
+Front End ----> Switch to ($state.emoji) and display relevant emoji with appropriate links.
+        I I
+        I I 
+User ----> Hits "Try Again" to reset back to ($state.home)

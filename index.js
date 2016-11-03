@@ -1,51 +1,66 @@
-var express= require('express');
+var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var router = express.Router();
 var port = process.env.PORT || 8080;
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://nigel:farage@ds029117.mlab.com:29117/hdisound')
+var inputRoutes = require('./server/routes/input.js')
+var inputCtrl = require('./server/controllers/input.js')
+var inputText = require('./myModule.js')
+var dotenv = require('dotenv').load({silent: true})
 
 
-var ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
 
-var tone_analyzer = new ToneAnalyzerV3({
-  username: '8fbc8e10-c882-4809-b991-b94f19c20570',
-  password: '2LMq1bHt5ieu',
-  version_date: '2016-05-19'
+mongoose.connect(process.env.MONGO_URL, function(err){
+  if(err) return console.log(err)
+  console.log("Connect to DB");
 })
 
-tone_analyzer.tone({ text: 'Greetings'},
-function(err,tone){
-  if(err)
-  console.log(err);
-  else {
-     console.log(JSON.stringify(tone, null, 2));
-  }});
-
-
-  tone_analyzer.tone({text: "I am very happy that this project is working. Jimmy and Andy make a great team!"},function(err,tone){
-    if(err)
-      console.log(err);
-    else {
-       console.log(JSON.stringify(tone, null, 2));
-    }
-  })
+var Input = require('./server/models/input.js')
 
 
 
-  app.use(bodyParser.urlencoded({extended:true}));
-  app.use(bodyParser.json());
-  app.use('/api', router);
+//MIDDLEWARE
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(bodyParser.json());
+
+app.use(function(req, res, next) {
+    // do logging
+    console.log('Something is happening.');
+    next(); // make sure we go to the next routes and don't stop here
+});
+
+app.use(express.static('client'))
+
+//ROUTES FOR /
 
 
-  app.get('/', function(req,res){
-    res.json({message: "F YES"});
-  });
-  app.get('/api', function(req,res){
-    res.json({message: "API!"})
-  })
+
+app.use('/api', inputRoutes)
+
+app.get('*', function(req, res) {
+    res.sendFile(__dirname + '/client/index.html')
+});
 
 
-  app.listen(port);
-  console.log("Server spinning on" + port);
+app.listen(port, function(err) {
+  console.log(err || "Listening on port 3000.")
+})
+//ROUTES FOR /API
+// app.route('/api')
+//
+//   .get(inputCtrl.index)
+//
+//   .post(inputCtrl.create)
+//
+// app.route('/api/inputs')
+//
+//   .get(inputCtrl.index)
+//
+// app.route('/api/inputs/:input_id')
+//
+//   .get(inputCtrl.show)
+//
+//   .delete(inputCtrl.destroy)
