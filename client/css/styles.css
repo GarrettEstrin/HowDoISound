@@ -1,0 +1,13 @@
+#container{
+  margin: 0 auto;
+}
+#emoji{
+  font-size:64px;
+}
+body{
+  background: #eaeaea;
+}
+textarea{
+  margin: 0 auto;
+  border: 2px solid black;
+}
