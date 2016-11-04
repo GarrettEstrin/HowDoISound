@@ -18,14 +18,25 @@ function MainController($rootScope, $state, $http) {
       // tone analyzed. Do stuff with it:
       var emotionalTones = data.document_tone.tone_categories[0].tones
       var languageTones = data.document_tone.tone_categories[1].tones
+     var socialTones = data.document_tone.tone_categories[2].tones
       console.log(emotionalTones)
-      console.log(languageTones);
+      console.log("languageTones:");
+      console.log(languageTones)
+      console.log(socialTones);
       vm.tones = {
         anger: formatToneScore(emotionalTones[0]),
         joy: formatToneScore(emotionalTones[3]),
         disgust: formatToneScore(emotionalTones[1]),
         fear: formatToneScore(emotionalTones[2]),
-        sadness: formatToneScore(emotionalTones[4])
+        sadness: formatToneScore(emotionalTones[4]),
+        analytical: formatToneScore(languageTones[0]),
+        confident: formatToneScore(languageTones[1]),
+        tentative: formatToneScore(languageTones[2]),
+        openness: formatToneScore(socialTones[0]),
+        conscientiousness: formatToneScore(socialTones[1]),
+        extraversion: formatToneScore(socialTones[2]),
+        agreeableness: formatToneScore(socialTones[3]),
+        emotionalrange: formatToneScore(socialTones[4])
 
       }
     })
