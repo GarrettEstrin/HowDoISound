@@ -4,10 +4,25 @@
 #emoji{
   font-size:64px;
 }
+div.progress{
+  background-color:black;
+}
 body{
-  background: #eaeaea;
+  background-image: url("/img/cube.png");
+  color: #eaeaea;
+}
+h1{
+  border-bottom: 2px solid white;
+  border-radius: 10px;
+  text-align:center;
+}
+button{
+  background: black;
+  border-radius: 15px;
 }
 textarea{
   margin: 0 auto;
   border: 2px solid black;
+  background-color: #eaeaea;
+  color:black;
 }
