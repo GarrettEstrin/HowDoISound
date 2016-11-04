@@ -5,6 +5,9 @@
   font-size:64px;
   float: right;
 }
+#loading{
+  float:right;
+}
 div.progress{
   background-color:black;
   border: 1px solid #eaeaea;
@@ -49,15 +52,15 @@ button:hover{
   box-sizing: content-box;
   border: none;
   font: normal normal 400 84px/normal "Mrs Sheppards", Helvetica, sans-serif;
-  color: rgb(224, 239, 242);
+  color: rgb(rgb(255, 253, 211));
   text-align: center;
   -o-text-overflow: clip;
   text-overflow: clip;
-  text-shadow: -6px 3px 0 rgb(58,80,217) , -11px 7px 0 rgb(10,14,39) ;
+  text-shadow: -6px 3px 0 rgb(100,100,100) , -11px 7px 0 rgb(10,14,39) ;
 }
 
 .relief:hover {
-  text-shadow: 6px 3px 0 rgb(58,80,217) , 11px 7px 0 rgb(10,14,39) ;
+  text-shadow: 6px 3px 0 rgb(40, 58, 255) , 11px 7px 0 rgb(10,14,39);
   -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
   -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
   -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;

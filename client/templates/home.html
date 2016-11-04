@@ -1,114 +1,127 @@
 <div class="container">
 
-<div class = "row">
-<div class = "col-md-6 col-md-offset-3">
-  <div class="relief">How Do I Sound?</div>
-<link async href="http://fonts.googleapis.com/css?family=Mrs%20Sheppards" data-generated="http://enjoycss.com" rel="stylesheet" type="text/css"/>
-  </div>
-</div>
-<div class = "row">
-<br>
-
-<textarea class = "col-md-6 col-offset-md-3" ng-model="mc.input" rows="8" cols="40"></textarea>
-</div>
-<div class = "row">
-  <br>
-  <button ng-click="mc.analyze()" name="HDIS">Analyze!</button>
-
-
-
-
-<div id="emoji" ng-show="mc.tones.joy > 50 && mc.tones.anger < 50">
-  😀
-</div>
-
-<div id="emoji" ng-show="mc.tones.anger > 50 && mc.tones.joy < 50">
-  😡
-</div>
-
-<div id="emoji" ng-show="mc.tones.disgust > 50 && mc.tones.joy < 50">
-  🤒
-</div>
-
-<div id="emoji" ng-show="mc.tones.sadness > 50 && mc.tones.joy < 50">
-  ☹️
-</div>
-
-<div id="emoji" ng-show="mc.tones.fear > 50">
-  😱
-</div>
-
-</div>
-<br>
-  <div class="row">
-    <div class="col-md-6">
-      <h3> Joy: {{mc.tones.joy }} </h3>
-      <div class="progress">
-        <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{mc.tones.joy || '0'}}%"></div>
-      </div>
-
-      <br>
-
-      <h3>Anger: {{ mc.tones.anger }}</h3>
-      <div class="progress">
-        <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{ mc.tones.anger || '0'}}%"></div>
-      </div>
-
-      <br>
-
-      <h3>Disgust: {{mc.tones.disgust }}</h3>
-      <div class="progress">
-        <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{mc.tones.disgust || '0'}}%"></div>
-      </div>
-
-      <br>
-
-      <h3>Sadness: {{mc.tones.sadness }}</h3>
-      <div class="progress">
-        <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{mc.tones.sadness || '0'}}%"></div>
-      </div>
-
-      <br>
-
-      <h3>Fear: {{mc.tones.fear }}</h3>
-      <div class="progress">
-        <div class="progress-bar progress-bar-primary progress-bar-striped" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{mc.tones.fear || '0'}}%"></div>
-      </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="relief">How Do I Sound?</div>
+            <link async href="http://fonts.googleapis.com/css?family=Mrs%20Sheppards" data-generated="http://enjoycss.com" rel="stylesheet" type="text/css" />
+        </div>
     </div>
+    <div class="row">
+        <br>
 
-    <div class="col-md-6">
-      <h3> Openness: {{mc.tones.openness }} </h3>
-      <div class="progress">
-        <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{mc.tones.openness || '0'}}%"></div>
-      </div>
+        <textarea class="col-md-6 col-offset-md-3" ng-model="mc.input" rows="8" cols="40"></textarea>
 
-      <br>
-
-      <h3> Conscientiousness: {{mc.tones.conscientiousness }} </h3>
-      <div class="progress">
-        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{mc.tones.conscientiousness || '0'}}%"></div>
-      </div>
-
-      <br>
-
-      <h3> Extraversion: {{mc.tones.extraversion }} </h3>
-      <div class="progress">
-        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{mc.tones.joy || '0'}}%"></div>
-      </div>
-
-      <br>
-
-      <h3> Agreeableness: {{mc.tones.agreeableness }} </h3>
-      <div class="progress">
-        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{mc.tones.joy || '0'}}%"></div>
-      </div>
-
-      <br>
-
-      <h3> Emotional Range: {{mc.tones.emotionalrange }} </h3>
-      <div class="progress">
-        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{mc.tones.emotionalrange || '0'}}%"></div>
-      </div>
+        <div id="loading" ng-show="mc.loading"><img src="./img/loadingsmall.gif" alt="" /></div>
     </div>
-  </div>
+    <div class="row">
+        <br>
+        <button ng-click="mc.analyze()" name="HDIS">Analyze!</button>
+
+
+
+
+        <div id="emoji" ng-show="mc.tones.joy > 50 && mc.tones.anger < 50">
+            😀
+        </div>
+
+        <div id="emoji" ng-show="mc.tones.anger > 50 && mc.tones.joy < 50">
+            😡
+        </div>
+
+        <div id="emoji" ng-show="mc.tones.disgust > 50 && mc.tones.joy < 50">
+            🤒
+        </div>
+
+        <div id="emoji" ng-show="mc.tones.sadness > 50 && mc.tones.joy < 50">
+            ☹️
+        </div>
+
+        <div id="emoji" ng-show="mc.tones.fear > 50">
+            😱
+        </div>
+
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+            <h3> Joy: {{mc.tones.joy }} </h3>
+            <div class="progress">
+                <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{mc.tones.joy || '0'}}%"></div>
+            </div>
+
+            <br>
+
+            <h3>Anger: {{ mc.tones.anger }}</h3>
+            <div class="progress">
+                <div class="progress-bar progress-bar-danger progress-bar-striped" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{ mc.tones.anger || '0'}}%"></div>
+            </div>
+
+            <br>
+
+            <h3>Disgust: {{mc.tones.disgust }}</h3>
+            <div class="progress">
+                <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{mc.tones.disgust || '0'}}%"></div>
+            </div>
+
+            <br>
+
+            <h3>Sadness: {{mc.tones.sadness }}</h3>
+            <div class="progress">
+                <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{mc.tones.sadness || '0'}}%"></div>
+            </div>
+
+            <br>
+
+            <h3>Fear: {{mc.tones.fear }}</h3>
+            <div class="progress">
+                <div class="progress-bar progress-bar-primary progress-bar-striped" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{mc.tones.fear || '0'}}%"></div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <h3> Openness: {{mc.tones.openness }} </h3>
+            <div class="progress">
+                <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{mc.tones.openness || '0'}}%"></div>
+            </div>
+
+            <br>
+
+            <h3> Conscientiousness: {{mc.tones.conscientiousness }} </h3>
+            <div class="progress">
+                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{mc.tones.conscientiousness || '0'}}%"></div>
+            </div>
+
+            <br>
+
+            <h3> Extraversion: {{mc.tones.extraversion }} </h3>
+            <div class="progress">
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{mc.tones.extraversion || '0'}}%"></div>
+            </div>
+
+            <br>
+
+            <h3> Agreeableness: {{mc.tones.agreeableness }} </h3>
+            <div class="progress">
+                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{mc.tones.agreeableness || '0'}}%"></div>
+            </div>
+
+            <br>
+
+            <h3> Emotional Range: {{mc.tones.emotionalrange }} </h3>
+            <div class="progress">
+                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: {{mc.tones.emotionalrange || '0'}}%"></div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h4>Helpful Links</h4>
+
+        <p><a href="http://www.ibm.com/watson/developercloud/doc/tone-analyzer/understanding-tone.shtml">Understanding the Score</p>
+
+        <br>
+
+        <p><a href="https://owl.english.purdue.edu/owl/resource/652/1/">Purdue OWL</a></p>
+        <p><a href="http://www.wheaton.edu/Academics/Services/Writing-Center/Writing-Resources/Style-Diction-Tone-and-Voice">Wheaton Writing Center</a></p>
+
+    </div>
 </div>

@@ -5,13 +5,14 @@ MainController.$inject = ['$rootScope', '$state', '$http']
 
 function MainController($rootScope, $state, $http) {
   var vm = this
-
+  vm.loading = false
   vm.tones = {}
 
   $rootScope.$on('$stateChangeStart', function() {
     vm.$state = $state
   })
   vm.analyze = function(){
+    vm.loading=true;
     console.log("Let's analyze");
     console.log(vm.input);
     $http.post('/api/', {"textInput": vm.input}).success(function(data){
@@ -43,7 +44,9 @@ function MainController($rootScope, $state, $http) {
   }
 
   function formatToneScore(tone) {
+    vm.loading=false;
     return Math.round(tone.score * 100)
+
   }
 
 }
