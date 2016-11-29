@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var router = express.Router();
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 3000;
 var mongoose = require('mongoose');
 var inputRoutes = require('./server/routes/input.js')
 var inputCtrl = require('./server/controllers/input.js')
@@ -11,10 +11,10 @@ var dotenv = require('dotenv').load({silent: true})
 
 
 
-mongoose.connect(process.env.MONGO_URL, function(err){
-  if(err) return console.log(err)
-  console.log("Connect to DB");
-})
+// mongoose.connect(process.env.MONGO_URL, function(err){
+//   if(err) return console.log(err)
+//   console.log("Connect to DB");
+// })
 
 var Input = require('./server/models/input.js')
 
@@ -46,7 +46,7 @@ app.get('*', function(req, res) {
 
 
 app.listen(port, function(err) {
-  console.log(err || "Listening on port 3000.")
+  console.log(err || "Listening on port " + port)
 })
 //ROUTES FOR /API
 // app.route('/api')
